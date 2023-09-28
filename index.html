@@ -1,21 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wina Bwangu Web App Prototype</title>
+    <title>WINA BWANGU PROTOTYPE</title>
+    <!-- inport bootsrap and google charts -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+    
+    <!-- Custom CSS -->
     <style>
-        /* Add custom CSS styles here */
+        .chart-container {
+            border: 1px solid #ccc;
+            /* Border color */
+            border-radius: 8px;
+            /* Rounded corners */
+            box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.5);
+            /* Shadow effect */
+            padding: 15px;
+            /* Add some padding for spacing */
+            background-color: #fff;
+            /* Background color */
+            margin-bottom: 20px;
+            /* Add margin to separate containers */
+        }
 
-        /* Increase navbar height and change text color */
+        /* navbar height */
+        * {
+            font-family: Georgia, 'Times New Roman', Times, serif, sans-serif;
+        }
+
+        h2 {
+            color: rgb(233, 156, 1) !important;
+        }
+
+        .idBar {
+            color: rgb(232, 7, 244);
+        }
+
         .navbar {
             min-height: 70px;
-            background-color: #007bff; /* Navbar background color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-transform: uppercase;
+            text-size-adjust: 13px;
+            font-weight: bold;
         }
 
         /* Decrease dropdown width */
@@ -24,91 +59,142 @@
         }
 
         /* Add color to text */
-        h2, label, .btn, input, select, p {
-            color: #333; /* Text color */
+        h2,
+        label,
+        .btn,
+        input,
+        select,
+        p {
+            color: #333;
+            /* Text color */
+        }
+
+        /* Add some bottom margin to the table to create space for the footer */
+        table {
+            margin-bottom: 50px;
+            /* Adjust the value as needed */
+        }
+
+        /* Style for the footer */
+        footer {
+            background-color: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation Menu -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Wina Bwangu</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-        <!-- Add more navigation links here -->
-                </li>
-            </ul>
-        </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-info py-3">
+        <a class="navbar-brand text-center" href="#">Wina Bwangu</a>
     </nav>
 
-    <div class="mb-3">
-        <!-- Calculation results will be displayed here -->
+    <div class="mb-3 text-center idBar">
+        <!-- Random ID will be shown here -->
         <div id="ID"></div>
     </div>
 
-<!-- Dashboard -->
-<div class="container mt-4 p-4 border rounded" style="background-color: #f8f9fa;">
-    <h2 class="mb-4">Dashboard</h2>
-    
-    <!-- Buttons -->
-    <div class="mb-3">
-        <button onclick="ID()" class="btn btn-primary mr-2" id="calculateTotals">Calculate Summaries</button>
-        <button onclick="ID()" class="btn btn-primary" id="cumulativeRevenue">Cumulative Revenue</button>
-        <button onclick="ID()" class="btn btn-primary mr-2" id="calculateRemaining">Calculate Remaining</button>
+    <!-- Dashboard -->
+    <div class="container mt-4 p-4 border rounded" style="background-color: #f8f9fa;">
+        <h2 class="mb-4 text-center" id="dashboard">Dashboard</h2>
+
+        <!-- Buttons -->
+        <div class="mb-3 d-flex justify-content-between">
+            <button onclick="ID()" class="btn btn-primary mr-5" id="calculateTotals">Calculate Summaries</button>
+            <button onclick="ID()" class="btn btn-primary mr-5" id="cumulativeRevenue">Cumulative Revenue</button>
+            <button onclick="ID()" class="btn btn-primary mr-5" id="calculateRemaining">Calculate Remaining</button>
+        </div>
+
+
+        <!-- Result Display Area -->
+        <div id="resultDisplay" class="mb-3">
+            <!-- Calculation results will be displayed here -->
+            <div id="totalsResult"></div>
+        </div>
     </div>
-    
-  <!-- Result Display Area -->
-<div id="resultDisplay" class="mb-3">
-    <!-- Calculation results will be displayed here -->
-    <div id="totalsResult"></div>
-</div>
-</div>
+    </div>
 
-
-
-<!-- Requirement 2: Location-Based Service Selection -->
+    <!-- dropdown -->
     <div class="container mt-4">
-        <h2>Location-Based Service Selection</h2>
-        <label for="boothSelect">Select a Mobile Booth:</label>
-        <select id="boothSelect" class="form-control">
-            <option value="booth1">Wina 1</option>
-            <option value="booth2">Wina 2</option>
-            <option value="booth3">Wina 3</option>
-            <option value="booth4">Wina 4</option>
-            <option value="booth5">Wina 5</option>
-            <option value="booth6">Wina 6</option>
-            <!-- Add more booth options here -->
-        </select>
-        <div id="locationDisplay" class="mt-2">
-            <!-- Location will be displayed here based on selection -->
+        <div class="row">
+            <!-- Location-Based Service Selection -->
+            <div class="col-md-6">
+                <h2>Location-Based</h2>
+                <label for="boothSelect">Select a Mobile Booth:</label>
+                <select id="boothSelect" class="form-control">
+                    <option value="booth1">Wina 1</option>
+                    <option value="booth2">Wina 2</option>
+                    <option value="booth3">Wina 3</option>
+                    <option value="booth4">Wina 4</option>
+                    <option value="booth5">Wina 5</option>
+                    <option value="booth6">Wina 6</option>
+                    <!-- Add more booth options here -->
+                </select>
+                <div id="locationDisplay" class="mt-2">
+                    <!-- Location will be displayed here based on selection -->
+                </div>
+            </div>
+
+            <!-- Requirement 3: Service Selection and Revenue Display -->
+            <div class="col-md-6">
+                <h2>Service Selection</h2>
+                <label for="serviceSelect">Select a Service:</label>
+                <select id="serviceSelect" class="form-control">
+                    <!-- Service options will be dynamically populated based on the selected booth -->
+                </select>
+                <div id="revenueDisplay" class="mt-2">
+                    <!-- Revenue per Kwacha for the selected service will be displayed here -->
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Requirement 3: Service Selection and Revenue Display -->
+    <!-- charts -->
     <div class="container mt-4">
-        <h2>Service Selection and Revenue Display</h2>
-        <label for="serviceSelect">Select a Service:</label>
-        <select id="serviceSelect" class="form-control">
-            <!-- Service options will be dynamically populated based on the selected booth -->
-        </select>
-        <div id="revenueDisplay" class="mt-2">
-            <!-- Revenue per Kwacha for the selected service will be displayed here -->
+        <div class="row">
+            <!-- Pie Chart -->
+            <div class="col-md-6">
+                <div class="chart-container">
+                    <h2>Pie Chart</h2>
+                    <div id="piechart" style="width: 100%; height: 500px;"></div>
+                </div>
+            </div>
+
+            <!-- Tax Chart -->
+            <div class="col-md-6">
+                <div class="chart-container">
+                    <h2>Tax Chart</h2>
+                    <div id="taxChart" style="width: 100%; height: 400px;"></div>
+                </div>
+            </div>
         </div>
     </div>
-    
-    <div id="piechart" style="width: 900px; height: 500px;"></div>
-    <div id="taxChart" style="width: 600px; height: 400px;"></div>
-    
+
+
+    <!-- Table to display service frequency -->
+    <div class="container mt-4 p-4 border rounded" style="background-color: #f8f9fa;">
+        <h2 class="mb-4 text-center">Service Frequency </h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Mobile Booth</th>
+                    <th>Service</th>
+                    <th>Frequency</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- JavaScript will be used to populate this table with data -->
+            </tbody>
+        </table>
+    </div>
 
 
 
-
-
-    
+    <!-- barchat script -->
     <script>
         google.charts.load('current', { 'packages': ['corechart'] });
         google.charts.setOnLoadCallback(drawTaxChart);
@@ -141,9 +227,20 @@
         }
     </script>
 
+
+    <!-- Footer -->
+    <footer class="bg-info text-white text-center py-3">
+        <div class="container">
+            <p>&copy; 2023 Wina Bwangu. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <!-- external JavaScript -->
     <script src="/js/dropedown.js"></script>
     <script src="/js/servicesRevenue.js"></script>
     <script src="/js/generateID.js"></script>
     <script src="/js/calculateTotals.js"></script>
 </body>
+
 </html>
