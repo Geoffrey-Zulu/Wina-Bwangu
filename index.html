@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wina Bwangu Web App Prototype</title>
+    <!-- Link to Bootstrap CSS (you may need to download and host it locally) -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include your custom CSS file if needed -->
+    <!-- <link rel="stylesheet" href="custom.css"> -->
+    <style>
+        /* Add custom CSS styles here */
+
+        /* Increase navbar height and change text color */
+        .navbar {
+            min-height: 70px;
+            background-color: #007bff; /* Navbar background color */
+        }
+
+        /* Decrease dropdown width */
+        .form-control {
+            width: 200px;
+        }
+
+        /* Add color to text */
+        h2, label, .btn, input, select, p {
+            color: #333; /* Text color */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Menu -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Wina Bwangu</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <!-- Add more navigation links here -->
+            </ul>
+        </div>
+    </nav>
+
+<!-- Dashboard -->
+<div class="container mt-4 p-4 border rounded" style="background-color: #f8f9fa;">
+    <h2 class="mb-4">Dashboard</h2>
+    
+    <!-- Buttons -->
+    <div class="mb-3">
+        <button class="btn btn-primary mr-2" id="calculateTotals">Calculate Totals</button>
+        <button class="btn btn-primary mr-2" id="calculateRemaining">Calculate Remaining</button>
+        <button class="btn btn-primary mr-2" id="totalRevenue">Total Revenue</button>
+        <button class="btn btn-primary mr-2" id="totalCapital">Total Capital</button>
+        <button class="btn btn-primary" id="cumulativeRevenue">Cumulative Revenue</button>
+    </div>
+    
+    <!-- Dashboard Elements (Add more as needed) -->
+    <div class="mb-3">
+        <!-- Dashboard Element 1 -->
+     <!-- Requirement 4: Transaction Amount Calculation with Tax -->
+     <div class="container mt-4">
+        <h2>Transaction Amount Calculation with Tax</h2>
+        <label for="transactionAmount">Transaction Amount (before tax):</label>
+        <input type="number" id="transactionAmount" class="form-control" placeholder="Transaction Amount">
+        <button class="btn btn-primary mt-2" id="calculateTax">Calculate Tax</button>
+        <div id="taxResult" class="mt-2">
+            <!-- Tax calculation result will be displayed here -->
+        </div>
+    </div>
+    </div>
+</div>
+
+<!-- Requirement 2: Location-Based Service Selection -->
+    <div class="container mt-4">
+        <h2>Location-Based Service Selection</h2>
+        <label for="boothSelect">Select a Mobile Booth:</label>
+        <select id="boothSelect" class="form-control">
+            <option value="booth1">Wina 1</option>
+            <option value="booth2">Wina 2</option>
+            <option value="booth3">Wina 3</option>
+            <option value="booth4">Wina 4</option>
+            <option value="booth5">Wina 5</option>
+            <option value="booth6">Wina 6</option>
+            <!-- Add more booth options here -->
+        </select>
+        <div id="locationDisplay" class="mt-2">
+            <!-- Location will be displayed here based on selection -->
+        </div>
+    </div>
+
+    <!-- Requirement 3: Service Selection and Revenue Display -->
+    <div class="container mt-4">
+        <h2>Service Selection and Revenue Display</h2>
+        <label for="serviceSelect">Select a Service:</label>
+        <select id="serviceSelect" class="form-control">
+            <!-- Service options will be dynamically populated based on the selected booth -->
+        </select>
+        <div id="revenueDisplay" class="mt-2">
+            <!-- Revenue per Kwacha for the selected service will be displayed here -->
+        </div>
+    </div>
+
+    <!-- Requirement 5: Populating The Web App with Historical Data -->
+    <div class="container mt-4">
+        <h2>Populating The Web App with Historical Data</h2>
+        <p>Data from different mobile booths and locations will be populated here.</p>
+        <!-- You can use tables or other elements to display historical data -->
+    </div>
+
+
+    <!-- Include Bootstrap JS (you may need to download and host it locally) -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Include jQuery (required for Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- Include your custom JavaScript file -->
+    <script src="/js/dropedown.js"></script>
+    <script src="/js/servicesRevenue.js"></script>
+    <script src="/js/generateID.js"></script>
+</body>
+</html>
