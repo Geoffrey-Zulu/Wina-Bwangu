@@ -2767,12 +2767,6 @@ var data = google.visualization.arrayToDataTable([
 ]);
 
 
-
-
-
-
-
-
 // Function to calculate and populate service frequency data in the table
 function populateServiceFrequencyTable() {
   const serviceFrequencyTable = document.querySelector("table tbody");
