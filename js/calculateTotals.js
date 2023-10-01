@@ -2819,3 +2819,4 @@ function populateServiceFrequencyTable() {
 
 // Call the function to populate the table when the page loads
 window.addEventListener("DOMContentLoaded", populateServiceFrequencyTable);
+console.log(populateServiceFrequencyTable())
